@@ -1,0 +1,48 @@
+<div id="page-wrapper">
+    <div class="row">
+        <div class="col-lg-12">
+            <h1>Gerät bearbeiten
+                <small>{{device.name}}</small>
+            </h1>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-9">
+            <div class="gobi-panel">
+                <div class="gobi-widget-body">
+                    <form class="form-horizontal" role="form">
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label" for="name_input">Name</label>
+                            <div class="col-sm-10">
+                                <input ng-model="device.name" id="name_input" name="name" type="text" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label" for="ipv6_input">IPv6-Adresse</label>
+                            <div class="col-sm-10">
+                                <input value="{{device.address}}" id="ipv6_input" name="address" type="text" class="form-control" />
+                            </div>
+                        </div>
+                        <a ng-click="save_device()" class="btn btn-success">Speichern</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- col -->
+
+        <div class="col-lg-3">
+            <div class="gobi-panel">
+                <div class="gobi-widget-body">
+                    <p>Weitere Aktionen:</p>
+                    <a ng-click="rescan()" class="btn btn-success btn-block"><i class="fa fa-refresh"></i> Neu scannen </a>
+                    <a ng-click="delete_device()" class="btn btn-danger btn-block"><i class="fa fa-trash-o"></i> Gerät entfernen </a>
+                </div>
+            </div>
+        </div>
+        <!-- col -->
+
+    </div>
+    <!-- row -->
+
+</div>

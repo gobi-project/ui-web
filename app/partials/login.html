@@ -1,0 +1,85 @@
+<div class="login-widget-container">
+    <div class="col-lg-4 col-lg-offset-4 col-md-6 col-md-offset-3">
+        <div class="gobi-panel">
+            <div class="gobi-widget-heading">
+                <p>
+                    <img class="login-header-image" src="img/web-ui-logo.png" />
+                    <span class="login-header-title">SmartHome</span>
+                </p>
+            </div>
+            <div class="gobi-widget-body">
+                <form ng-submit="login()">
+                    <div class="row">
+                        <label class="col-xs-12" for="username_input">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-user"></i>
+                                </span>
+                                <input ng-model="username" id="username_input" type="text" class="form-control" required/>
+                            </div>
+                        </label>
+                    </div>
+
+                    <div class="row">
+                        <label class="col-xs-12" for="password_input">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-lock"></i>
+                                </span>
+                                <input ng-model="password" id="password_input" type="password" class="form-control" required/>
+                            </div>
+                        </label>
+                    </div>
+
+                    <div ng-show="login_error">
+                    <p class="text-center">Fehler bei Login...</p>
+                    <p class="text-center">Benutzername / Passwort korrekt?</p>
+                    </div>
+                    <div>
+                    <p ng-show="connection_error" class="text-center">Verbindungsfehler...</p>
+                    </div>
+
+                    <div class="panel-group" id="accordion">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#accordion" ng-click="toggle_connection_options()">
+          Verbindungsoptionen
+        </a>
+                                </h4>
+                            </div>
+
+
+                            <div id="collapseOne" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <p>Optionale Verbindungsoptionen:</p>
+                                    <label class="col-xs-12" for="api_server_input">IP-Adresse
+                                        <br />
+                                        <div class="input-group">
+                                            <span class="input-group-addon"><i class="fa fa-table"></i>
+                                            </span>
+                                            <input ng-model="api_server" id="api_server_input" type="text" class="form-control" />
+                                        </div>
+                                    </label>
+
+                                    <label class="col-xs-12" for="api_port_input">Port
+                                        <br />
+                                        <div class="input-group">
+                                            <span class="input-group-addon"><i class="fa fa-table"></i>
+                                            </span>
+                                            <input ng-model="api_port" id="api_port_input" type="text" class="form-control" />
+                                        </div>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div>
+                        <input type="submit" ng-click="login()" value="Login" class="login-button btn btn-lg btn-success"/>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

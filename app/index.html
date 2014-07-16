@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html ng-app="GobiSmartHome">
+
+<head>
+    <title>GOBI SmartHome</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- JS -->
+    <script src="../bower_components/jquery/dist/jquery.js"></script>
+    <script src="../bower_components/momentjs/moment.js"></script>
+    <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="../bower_components/angular/angular.js"></script>
+    <script src="../bower_components/angular-route/angular-route.js"></script>
+    <script src="../bower_components/angular-resource/angular-resource.js"></script>
+    <script src="../bower_components/angular-animate/angular-animate.js"></script>
+    <script src="../bower_components/lodash/dist/lodash.min.js"></script>
+    <script src="../bower_components/restangular/dist/restangular.min.js"></script>
+    <script src="../bower_components/d3/d3.js"></script>
+    <script src="../bower_components/nvd3/nv.d3.js"></script>
+    <script src="../bower_components/angularjs-nvd3-directives/dist/angularjs-nvd3-directives.js"></script>
+    <script src="js/angular-local-storage.min.js"></script>
+    <script src="js/bootstrap-colorpicker-module.js"></script>
+    <!-- APP -->
+    <script src="js/app.js"></script>
+    <script src="js/services.js"></script>
+    <script src="js/controllers.js"></script>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="../bower_components/nvd3/nv.d3.css" />
+    <link rel="stylesheet" href="../bower_components/font-awesome/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="css/gobi.css" />
+    <link rel="stylesheet" href="css/colorpicker.css" />
+
+
+</head>
+
+<body>
+    <div id="wrapper">
+        <header ng-controller="HeaderCtrl" class="page-header" ng-show="logged_in()">
+            <div class="navbar hidden-xs" ng-controller="LoginCtrl">
+                <ul class="nav navbar-nav navbar-right pull-right">
+                    <li>
+                        <a href="#">
+                            {{current_user}}
+                            <i class="fa fa-user"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a data-toggle="modal" data-target="#psk-modal">
+                            PSK
+                            <i class="fa fa-plus"></i>
+                            <i class="fa fa-lock"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a ng-click="logout()">
+                            <i class="fa fa-power-off"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </header>
+
+
+        <!-- Sidebar -->
+        <nav ng-controller="HeaderCtrl" class="navbar navbar-inverse navbar-fixed-top" role="navigation" ng-show="logged_in()">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+
+                <a class="navbar-brand visible-xs" href="/">GOBI</a>
+            </div>
+
+            <div class="brand-image-container hidden-xs">
+                <a class="brand header-logo" href="/">
+                    <image src="img/web-ui-logo.png" />
+                </a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
+                <ul class="nav navbar-nav side-nav">
+                    <li ng-class="{ active: isActive('/')}">
+                        <a href="#/"><i class="fa fa-home side-menu-icon"></i> Übersicht</a>
+                    </li>
+                    <li ng-class="{ active: isActive('/devices')}">
+                        <a href="#/devices"><i class="fa fa-rss side-menu-icon"></i> Geräte</a>
+                    </li>
+                    <li ng-class="{ active: isActive('/groups')}">
+                        <a href="#/groups"><i class="fa fa-sitemap side-menu-icon"></i> Gruppen</a>
+                    </li>
+                    <li ng-class="{ active: isActive('/rules')}">
+                        <a href="#/rules"><i class="fa fa-exclamation side-menu-icon"></i> Regeln</a>
+                    </li>
+                    <li ng-class="{ active: isActive('/users')}">
+                        <a href="#/users"><i class="fa fa-users side-menu-icon"></i> Benutzer</a>
+                    </li>
+                    <li class="dropdown" ng-class="{ active: isActive('/settings')}">
+                      <a data-toggle="collapse" data-target="#settings_dropdown"><i class="fa fa-cog side-menu-icon"></i> Einstellungen <b class="caret"></b></a>
+                      <ul class="collapse sidebar" id="settings_dropdown">
+                        <li><a href="#/psks">Pre-shared Keys</a></li>
+                      </ul>
+                    </li>
+                </ul>
+
+            </div>
+            <!-- /.navbar-collapse -->
+
+        </nav>
+
+        <div ng-view></div>
+
+    </div>
+    <!-- /#wrapper -->
+
+    <div class="modal fade" id="psk-modal" ng-controller="PSKCtrl">
+        <div class="modal-dialog">
+            <div class="modal-content">
+              <form ng-submit="save_psk()">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">Pre-shared Key hinzufügen</h4>
+                </div>
+                <div class="modal-body">
+                    <p>Geben Sie den PSK ein, um eine sichere Kommunikation zwischen Zentrale und Endgerät herzustellen.</p>
+
+                    <div class="form-group">
+                        <label class="control-label" for="uuid">UUID (36 Zeichen)</label>
+                        <input ng-model="uuid" id="uuid" name="uuid" class="form-control" type="text" />
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label" for="psk">Pre-shared Key (16 Zeichen)</label>
+                        <input ng-model="psk" id="psk" name="psk" class="form-control" type="text" />
+                    </div>
+                    <div class="form-group">
+                        <label for="desc">Beschreibung (optional)</label>
+                        <input ng-model="desc" id="desc" name="desc" class="form-control" type="text" />
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <a class="btn btn-danger" data-dismiss="modal">Abbrechen</a>
+                    <input type="submit" class="btn btn-success" value="Speichern"/>
+                </div>
+              </form>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
+</body>
+
+</html>

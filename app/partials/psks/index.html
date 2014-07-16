@@ -1,0 +1,32 @@
+<div id="page-wrapper">
+
+    <h1 class="col-lg-offset-1">Pre-shared Keys</h1>
+
+    <div class="gobi-panel col-lg-9 col-lg-offset-1">
+        <div class="gobi-widget-body">
+            <div class="panel-body">
+                <div class="btn-group pull-right" style="margin-bottom: 20px;">
+                    <a data-toggle="modal" data-target="#psk-modal" class="btn btn-success"><i class="fa fa-plus"></i><i class="fa fa-lock"></i> Neuer PSK</a>
+                </div>
+                <table class="gobi-table">
+                    <tr>
+                        <td>UUID</td>
+                        <td>PSK</td>
+                        <td>Beschreibung</td>
+                        <td></td>
+                    </tr>
+                    <tr ng-repeat="psk in psks">
+                        <td>{{psk.uuid}}</td>
+                        <td>{{psk.psk}}</td>
+                        <td>{{psk.desc}}</td>
+                        <td><i ng-click="delete_psk(psk.id)" class="fa fa-trash-o"></i>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <!-- gobi-widget-body-->
+    </div>
+    <!-- gobi-panel-->
+
+</div>
+<!-- page-wrapper-->

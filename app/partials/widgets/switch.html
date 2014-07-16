@@ -1,0 +1,33 @@
+<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 gobi-widget-container" ng-controller="WidgetCtrl">
+    <div class="gobi-widget">
+        <div class="gobi-widget-body">
+            <div class="row">
+                <div class="col-xs-12 text-left">
+                    <p class="gobi-widget-text">
+                        <a href="#/resources/{{resource.id}}">
+                            {{resource.name}}
+                        </a>
+                    </p>
+                </div>
+
+                <div class="col-xs-11">
+                    <div class="onoffswitch">
+                        <input id="onoffswitch{{resource.id}}" type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" ng-checked="boolean_value()" ng-click="toggle_value()">
+                        <label class="onoffswitch-label" for="onoffswitch{{resource.id}}">
+                            <div class="onoffswitch-inner">
+                                <div class="onoffswitch-active">
+                                    <div class="onoffswitch-switch">An</div>
+                                </div>
+                                <div class="onoffswitch-inactive">
+                                    <div class="onoffswitch-switch">Aus</div>
+                                </div>
+                            </div>
+                        </label>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

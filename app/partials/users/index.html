@@ -1,0 +1,78 @@
+<div id="page-wrapper">
+
+    <h1 class="col-lg-offset-1">Benutzer
+    <small>
+      <i ng-click="refresh()" class="fa fa-refresh refresh-button"></i></small>
+    </small>
+    </h1>
+
+    <div class="gobi-panel col-lg-9 col-lg-offset-1">
+        <div class="gobi-widget-body">
+            <div class="panel-body">
+                <div class="btn-group pull-right" style="margin-bottom: 20px;">
+                    <a data-toggle="modal" data-target="#new-user-modal" class="btn btn-success"><i class="fa fa-plus"></i><i class="fa fa-user"></i> Neuer Nutzer</a>
+                </div>
+                <table class="gobi-table">
+                    <colgroup>
+                        <col width="50%">
+                            <col width="40%">
+                    </colgroup>
+                    <tr>
+                        <td>Name</td>
+                        <td>eMail</td>
+                        <td></td>
+                    </tr>
+                    <tr ng-repeat="user in users">
+                        <td>{{user.username}}</td>
+                        <td>{{user.email}}</td>
+                        <td><i ng-click="delete_user(user.id)" class="fa fa-trash-o"></i>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <!-- gobi-widget-body-->
+    </div>
+    <!-- gobi-panel-->
+
+    <div class="modal fade" id="new-user-modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">Neuer Nutzer</h4>
+                </div>
+                <div class="modal-body">
+                    <p>Daten für einen neuen Nutzer angeben:</p>
+                    <form>
+                        <div class="form-group">
+                            <label for="user">Name</label>
+                            <input ng-model="new_user_name" id="user" class="form-control" type="text" />
+                        </div>
+                        <div class="form-group">
+                            <label for="email">eMail</label>
+                            <input ng-model="new_user_email" id="email" class="form-control" type="email" />
+                        </div>
+                        <div class="form-group">
+                            <label for="pw">Passwort</label>
+                            <input ng-model="new_user_password" id="pw" class="form-control" type="password" />
+                        </div>
+                        <div class="form-group">
+                            <label for="pwa">Passwort wiederholen</label>
+                            <input id="pwa" class="form-control" type="password" />
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Abbrechen</button>
+                    <button ng-click="add_user()" type="button" data-dismiss="modal" class="btn btn-success">Speichern</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
+
+</div>
+<!-- page-wrapper-->

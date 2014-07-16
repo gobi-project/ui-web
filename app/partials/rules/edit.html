@@ -1,0 +1,167 @@
+<div id="page-wrapper">
+
+    <h1>Regel <small>{{rule.name}}</small></h1>
+
+    <div class="col-lg-6">
+        <div class="gobi-widget-heading">
+            Informationen
+        </div>
+        <div class="gobi-panel">
+            <div class="gobi-widget-body">
+                <form>
+                    <div class="form-group">
+                        <div class="form-group">
+                            <label for="name_input" class="col-sm-2 control-label">Name</label>
+                            <div>
+                                <input class="col-sm-9 form-control" type="text" id="name_input" value="{{rule.name}}" />
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-12">
+        <div class="gobi-widget-heading">
+            Bedingungen
+        </div>
+        <div class="gobi-panel">
+            <div class="gobi-widget-body">
+                <a data-toggle="modal" data-target="#condition-modal" class="btn btn-success pull-right" style="margin-bottom: 15px"><i class="fa fa-plus"></i> Bedingung</a>
+                <table class="gobi-table">
+                    <colgroup>
+                        <col width="10%" />
+                        <col width="70%" />
+                        <col width="10%" />
+                    </colgroup>
+                    <tr>
+                        <td>1</td>
+                        <td>
+                            <ul>
+                                <li ng-repeat="(key, value) in rule.conditions">{{condition_to_readable(key, value[0])}}</li>
+                            </ul>
+                        </td>
+
+                        <td>
+                            <button type="button" class="btn btn-success btn-sm btn-block"><i class="fa fa-edit"></i> bearbeiten</button>
+                            <button type="button" class="btn btn-danger btn-sm btn-block"><i class="fa fa-trash-o"></i> löschen</button>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-12">
+        <div class="gobi-widget-heading">
+            Aktionen
+        </div>
+        <div class="gobi-panel">
+            <div class="gobi-widget-body">
+                <a data-toggle="modal" data-target="#action-modal" class="btn btn-success pull-right" style="margin-bottom: 15px"><i class="fa fa-plus"></i> Aktion</a>
+
+                <table class="gobi-table">
+                    <colgroup>
+                        <col width="10%" />
+                        <col width="70%" />
+                        <col width="10%" />
+                    </colgroup>
+                    <tr>
+                        <td>1</td>
+                        <td>
+                            <ul>
+                                <li ng-repeat="action in rule.actions">{{action_to_readable(action)}}</li>
+                            </ul>
+                        </td>
+
+                        <td>
+                            <button type="button" class="btn btn-success btn-sm btn-block"><i class="fa fa-edit"></i> bearbeiten</button>
+                            <button type="button" class="btn btn-danger btn-sm btn-block"><i class="fa fa-trash-o"></i> löschen</button>
+                        </td>
+                    </tr>
+
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="condition-modal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Bedingung bearbeiten</h4>
+            </div>
+            <div class="modal-body">
+                <p>Daten der Bedingung verarbeiten:</p>
+                <form>
+                    <div class="form-group">
+                        <label for="sensor">Sensor</label>
+                        <select id="sensor" class="form-control">
+                            <option ng-repeat="sensor in resources | filter: { interface_type: 'core.s' }">{{sensor.name}}</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="op">Operator</label>
+                        <select id="op" class="form-control">
+                            <option>gleich</option>
+                            <option>größer als</option>
+                            <option>kleiner als</option>
+                            <option>ungleich</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="condtion_value">Wert</label>
+                        <input class="form-control" name="condition_value" id="condition_value" type="text" />
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Abbrechen</button>
+                <button type="button" class="btn btn-success">Speichern</button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->
+
+<div class="modal fade" id="action-modal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Aktion bearbeiten</h4>
+            </div>
+            <div class="modal-body">
+                <p>Daten der Aktion verarbeiten:</p>
+                <form>
+                    <div class="form-group">
+                        <label for="user">Name</label>
+                        <input id="user" class="form-control" type="text" />
+                    </div>
+                    <div class="form-group">
+                        <label for="actor">Aktor</label>
+                        <select id="actor" class="form-control">
+                            <option ng-repeat="actor in resources | filter: { interface_type: 'core.a' }">{{actor.name}}</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="value">Wert</label>
+                        <input id="value" class="form-control" type="text" />
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Abbrechen</button>
+                <button type="button" class="btn btn-success">Speichern</button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->

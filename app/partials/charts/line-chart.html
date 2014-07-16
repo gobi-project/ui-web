@@ -1,0 +1,27 @@
+<div class="col-lg-12" ng-controller="ChartCtrl">
+    <div class="gobi-widget-heading">
+        {{resource.name}}
+    </div>
+    <div class="gobi-panel">
+        <div class="gobi-widget-body">
+
+            <div class="btn-group">
+
+                <button ng-click="getChart('5_minutes')" ng-class="{ 'active' : timespace == '5_minutes' }" class="btn btn-small btn-default active">5 min</button>
+                <button ng-click="getChart('10_minutes')" ng-class="{ 'active' : timespace == '10_minutes' }" class="btn btn-small btn-default">10 min</button>
+                <button ng-click="getChart('30_minutes')" ng-class="{ 'active' : timespace == '30_minutes' }" class="btn btn-small btn-default">30 min</button>
+                <button ng-click="getChart('one_hour')" ng-class="{ 'active' : timespace == 'one_hour' }" class="btn btn-small btn-default">1 h</button>
+                <button ng-click="getChart('five_hour')" ng-class="{ 'active' : timespace == 'five_hour' }" class="btn btn-small btn-default">5 h</button>
+                <button ng-click="getChart('one_day')" ng-class="{ 'active' : timespace == 'one_day' }" class="btn btn-small btn-default active">24 h</button>
+                <button ng-click="getChart('one_week')" ng-class="{ 'active' : timespace == 'one_week' }" class="btn btn-small btn-default">1 Woche</button>
+            <!--    <button ng-click="getChart('one_month')" ng-class="{ 'active' : timespace == 'one_month' }" class="btn btn-small btn-default">1 Monat</button>
+                <button ng-click="getChart('one_year')" ng-class="{ 'active' : timespace == 'one_year' }" class="btn btn-small btn-default">1 Jahr</button>
+                <button ng-click="getChart('five_years')" ng-class="{ 'active' : timespace == 'five_years' }" class="btn btn-small btn-default">5 Jahre</button> -->
+            </div>
+
+            <nvd3-line-chart height="400" data="chartData" showXAxis="true" showYAxis="true" tooltips="false" interactive="true" xAxisTickFormat="xAxisTickFormatFunction()" yAxisTickFormat="yAxisTickFormatFunction()" noData="Keine Messdaten verfügbar">
+                <svg></svg>
+            </nvd3-line-chart>
+        </div>
+    </div>
+</div>

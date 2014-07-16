@@ -1,0 +1,40 @@
+<div id="page-wrapper">
+
+  <div class="row">
+
+    <div class="col-lg-12">
+      <h1>Übersicht
+        <small>Aktoren und Sensoren
+        <i ng-click="refresh()" class="fa fa-refresh refresh-button"></i></small>
+      </h1>
+    <input class="col-xs-12 form-control" style="margin-bottom: 20px" placeholder="Name einer Gruppe oder einer Ressource..." ng-model="query">
+
+    </div>
+  </div>
+  <!-- /.row -->
+
+  <div class="row">
+
+  <div ng-repeat="resource_type in resource_types" class="row">
+        <p style="margin-left:15px">{{type_to_readable({resource_type: resource_type})}}</p>
+
+      <div ng-repeat="resource in resources | filter:resource_type | filter:query " >
+        <div ng-include="getWidgetUrl(resource)"></div>
+      </div>
+    </div>
+  </div>
+  <!-- /.row -->
+
+  <div ng-show="is_loading">
+        <div class="row">
+            <div class="gobi-panel col-lg-10 col-lg-offset-1" style="margin-top: 25px">
+                <div class="gobi-widget-body">
+                    <p class="text-center">Lade ... <i class="fa fa-refresh fa-spin"></i></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+  <div ng-include="'connection_error.html'"></div>
+
+</div><!-- /#page-wrapper -->

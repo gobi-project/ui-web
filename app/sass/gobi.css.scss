@@ -1,0 +1,330 @@
+@import url(http://fonts.googleapis.com/css?family=Roboto:300);
+
+/* fonts */
+$font-family-sans-serif: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+
+/* color definitions */
+$gobi-orange: #c9441a;
+$gobi-widget-background: rgba(41, 41, 41, 0.7);
+$gobi-widget-background-dark: rgba(41, 41, 41, 0.8);
+$gobi-widget-background-darkest: rgba(41, 41, 41, 0.9);
+$gobi-background-light: rgba(240, 240, 240, 0.8);
+
+$panel-bg: $gobi-widget-background;
+$panel-inner-border: $gobi-widget-background-dark;
+$panel-default-border: $gobi-widget-background-dark;
+
+$gobi-info-color: #4367C9;
+$gobi-warning-color: #FFC900;
+$gobi-danger-color: #C9441A;
+$gobi-success-color: #879C18;
+
+/* see http://getbootstrap.com/customize/#less-variables */
+
+$brand-success: $gobi-success-color;
+$brand-danger: $gobi-danger-color;
+$brand-warning: $gobi-warning-color;
+$brand-info: $gobi-info-color;
+
+$link-color: #FFF;
+$text-color: #FFF;
+
+$border-radius-base: 0px;
+$border-radius-small: 0px;
+$border-radius-large: 0px;
+
+$navbar-inverse-color: white;
+$navbar-inverse-bg: rgba(0, 0, 0, 0);
+$navbar-inverse-border: rgba(0, 0, 0, 0);
+
+$navbar-inverse-link-color: $link-color;
+
+/* misc */
+
+$menu-bar-width: 190px;
+$grid-gutter-width: 20px;
+
+$font-size-base: 15px;
+$grid-columns: 12;
+
+/* modal */
+
+$modal-content-bg: $gobi-widget-background-darkest;
+$modal-backdrop-bg: $gobi-background-light;
+$modal-header-border-color: $gobi-background-light;
+
+@import "bootstrap";
+
+body {
+  margin-top: 50px;
+  background: rgb(31, 16, 7);
+  // Old browsers
+  background-image: url('../img/grey_wash_wall.png'), -moz-linear-gradient(left, rgba(31, 16, 7, 1) 0%, rgba(27, 28, 10, 1) 23%, rgba(54, 28, 24, 1) 76%, rgba(31, 17, 9, 1) 100%);
+  // FF3.6+
+  background-image: url('../img/grey_wash_wall.png'), -webkit-gradient(linear, left top, right top, color-stop(0%, rgba(31, 16, 7, 1)), color-stop(23%, rgba(27, 28, 10, 1)), color-stop(76%, rgba(54, 28, 24, 1)), color-stop(100%, rgba(31, 17, 9, 1)));
+  // Chrome,Safari4+
+  background-image: url('../img/grey_wash_wall.png'), -webkit-linear-gradient(left, rgba(31, 16, 7, 1) 0%, rgba(27, 28, 10, 1) 23%, rgba(54, 28, 24, 1) 76%, rgba(31, 17, 9, 1) 100%);
+  // Chrome10+,Safari5.1+
+  background-image: url('../img/grey_wash_wall.png'), -o-linear-gradient(left, rgba(31, 16, 7, 1) 0%, rgba(27, 28, 10, 1) 23%, rgba(54, 28, 24, 1) 76%, rgba(31, 17, 9, 1) 100%);
+  // Opera 11.10+
+  background-image: url('../img/grey_wash_wall.png'), -ms-linear-gradient(left, rgba(31, 16, 7, 1) 0%, rgba(27, 28, 10, 1) 23%, rgba(54, 28, 24, 1) 76%, rgba(31, 17, 9, 1) 100%);
+  // IE10+
+  background-image: url('../img/grey_wash_wall.png'), linear-gradient(to right, rgba(31, 16, 7, 1) 0%, rgba(27, 28, 10, 1) 23%, rgba(54, 28, 24, 1) 76%, rgba(31, 17, 9, 1) 100%);
+  // W3C
+  //background: url('bg.jpg') no-repeat center center fixed; background-size: cover;
+}
+
+.center {
+  float: none;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.header-logo {
+  padding-left: 30px;
+}
+
+.navbar-inverse {
+  background-color: black;
+}
+
+.navbar-user {
+  background-color: $gobi-widget-background;
+}
+
+ul.navbar-user>.dropdown>li {
+  background-color: $gobi-widget-background-dark;
+}
+
+.gobi-widget-container {
+  min-height: 80px;
+}
+
+.gobi-table {
+  @extend .table;
+}
+
+.gobi-table>tbody>tr>td {
+  border-top: 0px;
+}
+
+.gobi-table>tbody>tr>td {
+  border-top: 0px;
+}
+
+.gobi-table>tbody>tr:nth-of-type(odd) {
+  background-color: $gobi-widget-background-dark;
+}
+
+.gobi-table>tbody>tr>th {
+  border-top: 0px;
+}
+
+.gobi-center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.gobi-panel {
+  @extend .panel;
+  background-color: $gobi-widget-background;
+}
+
+.gobi-chart {
+  background-color: $gobi-widget-background-dark;
+}
+
+.gobi-success {
+  color: $gobi-success-color;
+}
+
+.gobi-info {
+  color: $gobi-info-color;
+}
+
+.gobi-warning {
+  color: $gobi-warning-color;
+}
+
+.gobi-danger {
+  color: $gobi-danger-color;
+}
+
+.breadcrumb {
+  @extend .gobi-widget;
+}
+
+.side-menu-icon {
+  float: right;
+  margin-right: 5px;
+}
+
+.btn-default{
+-webkit-box-shadow:  1px 1px 3px 2px rgba(3, 3, 3, 0.3);
+        box-shadow:  1px 1px 3px 2px rgba(3, 3, 3, 0.3);
+}
+
+.login-widget-container {
+    left: 0;
+    top: 50%;
+    margin-top: -192.5px;
+    position: absolute;
+    width: 100%;
+}
+
+.login-header-image {
+    padding-left: 15px;
+    padding-top: 15px;
+    margin-bottom: 7px;
+    vertical-align:text-bottom;
+}
+
+.login-header-title {
+  padding-left: 10px;
+}
+
+.login-button {
+  @extend .gobi-center;
+  margin-top: 35px;
+}
+
+.gobi-panel .input-group-addon {
+  color: white;
+  background-color: $gobi-widget-background-dark;
+  border-color: $gobi-widget-background;
+}
+
+.page-header {
+  display: block;
+  border: none;
+  padding: 0px;
+  margin: 0px;
+  height: 35px;
+  font-size: 16px;
+  padding-right: 40px;
+}
+
+.page-header ul li a:hover {
+  background-color: rgba(0,0,0,0);
+  color: $gobi-widget-background-dark;
+}
+
+.brand-image-container {
+  position: relative;
+  left: 0px;
+  top: 0px;
+  padding-bottom: 40px;
+  padding: 20px 0;
+  margin-left: -205px;
+  left: 235px;
+  width: $menu-bar-width;
+  position: absolute;
+  top: 8px;
+  border: none;
+  overflow-y: auto;
+}
+
+.modal-content {
+  color: white;
+}
+
+.refresh-button {
+  margin-left: 10px;
+}
+
+.refresh-button:hover {
+  -webkit-animation: spin 2s infinite linear;
+  -moz-animation: spin 2s infinite linear;
+  -o-animation: spin 2s infinite linear;
+  animation: spin 2s infinite linear;
+  color: white;
+}
+
+/* Edit Below to Customize Widths > 768px */
+@media (min-width: 768px) {
+  .navbar-header {
+    width: 250px; /*evtl. anders lösen*/
+    margin-top: 30px;
+  }
+
+  .navbar-inverse {
+    background-color: rgba(0, 0, 0, 0);
+  }
+
+/* Wrappers */
+
+  #wrapper {
+    padding-left: 225px;
+  }
+
+  #page-wrapper {
+    padding: 15px 25px;
+  }
+
+/* Side Nav */
+
+  .side-nav {
+    padding: 20px 0;
+    margin-left: -205px;
+    left: 225px;
+    width: $menu-bar-width;
+    position: absolute;
+    top: 134px;
+    border: none;
+    overflow-y: auto;
+    background-color: $gobi-widget-background;
+  }
+
+/* Bootstrap Default Overrides - Customized Dropdowns for the Side Nav */
+
+  .side-nav>li>a {
+    color: $link-color;
+    width: $menu-bar-width;
+  }
+
+  .side-nav>li:hover {
+    background-color: $gobi-widget-background-dark;
+  }
+
+  .side-nav>li>a:hover {
+    background-color: $gobi-widget-background-dark;
+    color: $link-color;
+  }
+
+  .side-nav>li.active>a {
+    border-left: 6px solid #fff;
+    border-color: $gobi-orange;
+    padding-left: 8px;
+    background-color: $gobi-widget-background-dark;
+  }
+
+  .side-nav>li.dropdown>ul {
+    position: relative;
+    min-width: $menu-bar-width;
+    padding: 0;
+    border: none;
+    border-radius: 0;
+    list-style-type: none;
+  }
+
+  .side-nav>li.dropdown>ul>li {
+    padding: 5px 5px 5px 25px;
+  }
+
+  .side-nav>li.dropdown>ul>li>a {
+    text-decoration: none;
+  }
+
+  .side-nav>li.dropdown>ul>li:hover,
+  .side-nav>li.dropdown>ul>li.active,
+  .side-nav>li.dropdown>ul>li:focus {
+    background-color: $gobi-widget-background-dark;
+    color: $link-color;
+  }
+
+
+}
+
+@import "gobi-widgets.css.scss";
+@import "gobi-modal.css.scss";

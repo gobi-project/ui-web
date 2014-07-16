@@ -1,0 +1,107 @@
+<div id="page-wrapper">
+
+    <h1 class="col-lg-10 col-lg-offset-1">Gruppen
+    <small>
+      <i ng-click="refresh()" class="fa fa-refresh refresh-button"></i></small>
+    </small>
+    </h1>
+
+    <div class="row">
+        <div class="col-lg-10 col-lg-offset-1">
+            <input class="col-xs-12 form-control" placeholder="Name einer Gruppe oder einer Ressource..." ng-model="query">
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-10 col-lg-offset-1">
+            <div class="btn-group">
+                <a data-toggle="modal" data-target="#new-group-modal" class="btn btn-success">Neue Gruppe <i class='fa fa-edit'></i></a>
+            </div>
+        </div>
+    </div>
+
+    <div ng-repeat="group in groups | filter:query" class="col-lg-10 col-lg-offset-1">
+        <h3><a href="#/groups/{{group.id}}">
+            {{group.name}}</a>
+        </h3>
+        <div class="gobi-panel">
+            <div class="gobi-widget-body">
+                <div class="panel-body">
+
+                    <div class="btn-group pull-right" style="margin-bottom: 15px">
+                        <a href="#/groups/{{group.id}}/edit" class="btn btn-success">bearbeiten <i class='fa fa-edit'></i></a>
+                    </div>
+
+                    <table class="gobi-table">
+                        <colgroup>
+                            <col width="70%" />
+                            <col width="30%" />
+                        </colgroup>
+                        <tr ng-repeat="resource in group.resources">
+                            <td>{{resource.name}}</td>
+                            <td>
+                                {{value_to_readable(resource)}}
+                            </td>
+                        </tr>
+                    </table>
+                    <p class="text-center" ng-show="group.resources.length == 0">Diese Gruppe hat keine Resourcen.</p>
+                </div>
+
+            </div>
+            <!-- gobi-widget-body-->
+        </div>
+        <!-- gobi-panel-->
+
+    </div>
+
+    <div class="modal fade" id="new-group-modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">Neue Gruppe</h4>
+                </div>
+                <div class="modal-body">
+                    <p>Daten für eine neue Gruppe:</p>
+                    <form>
+                        <div class="form-group">
+                            <label for="user">Name</label>
+                            <input ng-model="new_group_name" id="user" class="form-control" type="text" />
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Abbrechen</button>
+                    <button ng-click="add_group()" data-dismiss="modal" class="btn btn-success">Speichern</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
+
+    <div ng-show="is_loading">
+        <div class="row">
+            <div class="gobi-panel col-lg-10 col-lg-offset-1" style="margin-top: 25px">
+                <div class="gobi-widget-body">
+                    <p class="text-center">Lade Gruppen... <i class="fa fa-refresh fa-spin"></i></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div ng-show="group_list_empty()">
+        <div class="row">
+            <div class="gobi-panel col-lg-10 col-lg-offset-1" style="margin-top: 25px">
+                <div class="gobi-widget-body">
+                    <p class="text-center">Keine Gruppen vorhanden.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div ng-include="'connection_error.html'"></div>
+
+</div>
+<!-- page-wrapper-->

@@ -1,0 +1,43 @@
+<div id="page-wrapper">
+
+    <h1 class="col-lg-offset-1">Regeln</h1>
+
+    <div class="col-lg-9 col-lg-offset-1">
+        <div class="gobi-panel">
+            <div class="gobi-widget-body">
+                <a ng-click="show_demo_error()" class="btn btn-success pull-right" style="margin-bottom: 15px;"><i class="fa fa-plus"></i> Neue Regel</a>
+
+                <table class="gobi-table">
+                    <colgroup>
+                        <col width="50%" />
+                        <col width="30%" />
+                        <col width="10%" />
+                        <col width="10%" />
+                    </colgroup>
+                    <tr ng-repeat="rule in rules">
+                        <td><a ng-click="show_demo_error()">{{rule.name}}</a>
+                        </td>
+                        <td>aktiv</td>
+                        <td><i ng-click="show_demo_error()" class="fa fa-edit"></i>
+                        </td>
+                        <td><i ng-click="show_demo_error()" class="fa fa-trash-o"></i>
+                        </td>
+                    </tr>
+                </table>
+
+                <div ng-show="rules_list_empty()" class="text-center">
+                    <p>Lade Regeln... <i class="fa fa-refresh fa-spin"></i></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-9 col-lg-offset-1">
+        <div class="gobi-panel" ng-show="demo_error">
+            <div class="gobi-widget-body">
+                <p class="text-center">Die Anzeige einzelner Regeln sind in dieser Demo noch nicht implementiert.</p>
+            </div>
+        </div>
+    </div>
+
+</div>

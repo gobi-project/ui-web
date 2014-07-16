@@ -1,0 +1,70 @@
+<div id="page-wrapper">
+
+    <h1 class="col-lg-10 col-lg-offset-1">Geräte
+    <small>
+      <i ng-click="refresh()" class="fa fa-refresh refresh-button"></i></small>
+    </small>
+    </h1>
+
+    <div class="row">
+        <div class="col-lg-10 col-lg-offset-1">
+            <input class="col-xs-12 form-control" placeholder="Name einer Gruppe oder einer Ressource..." ng-model="query">
+        </div>
+    </div>
+
+    <div ng-repeat="device in devices | filter:query" class="col-lg-10 col-lg-offset-1">
+        <h3><a href="#/devices/{{device.id}}">{{device.name}}</a>
+        </h3>
+        <div class="gobi-panel">
+            <div class="gobi-widget-body">
+                <div class="panel-body">
+
+                    <div class="btn-group" style="float: right">
+                        <a href="#/devices/{{device.id}}/edit" class="btn btn-success">bearbeiten <i class="fa fa-edit"></i></a>
+                    </div>
+
+                    <p>Adresse: {{device.address}}</p>
+                    <p>Ressourcen: {{device.resources.length}}</p>
+                    <p>Status: {{device.status}}</p>
+
+                    <table class="gobi-table">
+                        <colgroup>
+                            <col width="30%" />
+                            <col width="25%" />
+                            <col width="25%" />
+                            <col width="20%" />
+                        </colgroup>
+                        <tr ng-repeat="resource in device.resources">
+                            <td><a href="#/resources/{{resource.id}}">{{resource.name}}</a>
+                            </td>
+                            <td>{{resource.path}}</td>
+                            <td>{{type_to_readable(resource)}}</td>
+                            <td>
+                                <div class="updated-via-websocket" data-widget-type="text-fade-in" data-resource-id="<%=resource.id%>" data-format="<%=resource.resource_type%>">
+                                    {{value_to_readable(resource)}}
+                                </div>
+                            </td>
+                        </tr>
+
+                    </table>
+                </div>
+            </div>
+            <!-- gobi-widget-body-->
+        </div>
+        <!-- gobi-panel-->
+    </div>
+
+    <div ng-show="device_list_empty()">
+        <div class="row">
+            <div class="gobi-panel col-lg-10 col-lg-offset-1" style="margin-top: 25px">
+                <div class="gobi-widget-body">
+                    <p class="text-center">Lade Geräte... <i class="fa fa-refresh fa-spin"></i></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div ng-include="'connection_error.html'"></div>
+
+</div>
+<!-- page-wrapper-->

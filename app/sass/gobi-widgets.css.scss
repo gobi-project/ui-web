@@ -1,0 +1,119 @@
+
+.widget-animation.ng-enter {
+  -webkit-transition:400ms linear all;
+  transition:400ms linear all;
+  opacity: 0;
+}
+.widget-animation.ng-leave {
+  -webkit-transition:400ms linear all;
+  transition:400ms linear all;
+  opacity: 1;
+}
+.widget-animation.ng-enter-active {
+  opacity: 1;
+}
+.widget-animation.ng-leave-active {
+  opacity: 0;
+}
+
+
+//**//
+
+.gobi-widget {
+  @extend .panel;
+  background-color: $gobi-widget-background;
+}
+
+.gobi-widget-placeholder {
+  background: rgba(51, 51, 51, 0.2);
+  border: 1px dashed rgba(255, 255, 255, 0.6);
+  margin: -1px -1px 29px -1px;
+}
+
+.gobi-widget:hover {
+  background-color: $gobi-widget-background-dark;
+}
+
+.gobi-widget-body {
+  @extend .panel-body;
+}
+
+.gobi-widget-heading {
+  font-size: 30px;
+  margin: 0;
+}
+
+.gobi-widget-text {
+  font-size: 15px;
+  margin: 0;
+}
+
+/* source: http://proto.io/freebies/onoff/ */
+
+.onoffswitch {
+    position: relative; width: 100px;
+    margin-top: 12px;
+    margin-left: auto;
+    margin-right: auto;
+    -webkit-user-select:none; -moz-user-select:none; -ms-user-select: none;
+}
+
+.onoffswitch-checkbox {
+    display: none;
+}
+
+.onoffswitch-label {
+    display: block; overflow: hidden; cursor: pointer;
+    border: 0px solid #999999; border-radius: 0px;
+}
+
+.onoffswitch-inner {
+    width: 200%; margin-left: -100%;
+    -moz-transition: margin 0.3s ease-in 0s; -webkit-transition: margin 0.3s ease-in 0s;
+    -o-transition: margin 0.3s ease-in 0s; transition: margin 0.3s ease-in 0s;
+}
+
+.onoffswitch-inner > div {
+    float: left; position: relative; width: 50%; height: 30px; padding: 0; line-height: 30px;
+    font-size: 16px; color: white;
+    -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
+}
+
+.onoffswitch-inner .onoffswitch-active {
+    padding-left: 15px;
+    background-color: #DDD; color: #FFFFFF;
+}
+
+.onoffswitch-inner .onoffswitch-inactive {
+    padding-right: 15px;
+    background-color: #DDD; color: #FFFFFF;
+    text-align: right;
+}
+
+.onoffswitch-switch {
+    width: 40px; margin: 0px; text-align: center; 
+    border: 0px solid #999999;border-radius: 0px; 
+    position: absolute; top: 0; bottom: 0;
+}
+.onoffswitch-active .onoffswitch-switch {
+    background: #C9441A; left: 0;
+}
+.onoffswitch-inactive .onoffswitch-switch {
+    background: #7A7A7A; right: 0;
+}
+
+.onoffswitch-active .onoffswitch-switch:before {
+    content: " "; position: absolute; top: 0; left: 40px; 
+    border-style: solid; border-color: #C9441A transparent transparent #C9441A; border-width: 15px 10px;
+}
+
+
+.onoffswitch-inactive .onoffswitch-switch:before {
+    content: " "; position: absolute; top: 0; right: 40px; 
+    border-style: solid; border-color: transparent #7A7A7A #7A7A7A transparent; border-width: 15px 10px;
+}
+
+
+.onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-inner {
+    margin-left: 0;
+}

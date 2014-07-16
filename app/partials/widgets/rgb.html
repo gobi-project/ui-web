@@ -1,0 +1,18 @@
+<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 gobi-widget-container" ng-controller="WidgetCtrl">
+  <div class="gobi-widget">
+    <div class="gobi-widget-body">
+      <div class="row">
+        <div class="col-xs-12 text-left">
+          <p class="gobi-widget-text"><a href="#/resources/{{resource.id}}">{{resource.name}}</a></p>
+        </div>
+
+          <div class="col-xs-offset-1 col-xs-10">
+            <div style="height: 35px; margin-top: 10px" ng-style="{'background-color': color_value}" class="btn-block"></div>
+
+            <button colorpicker type="button" colorpicker-position="top" ng-model="color_value" class="btn btn-block">Farbe wählen</button>
+            <button type="button" class="btn btn-success btn-block" ng-click="set_resource_rgb_value()">Speichern</button>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
